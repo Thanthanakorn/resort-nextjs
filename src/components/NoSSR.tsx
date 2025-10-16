@@ -22,8 +22,8 @@ export default function NoSSR({ children, fallback = null }: NoSSRProps) {
 }
 
 // Alternative: Suppress hydration warnings for specific components
-export function suppressHydrationWarning(Component: any) {
-  return function WrappedComponent(props: any) {
+export function suppressHydrationWarning<P extends object>(Component: React.ComponentType<P>) {
+  return function WrappedComponent(props: P) {
     return <Component {...props} suppressHydrationWarning />;
   };
 }
